@@ -4,11 +4,6 @@ const axios = require('axios')
   , camelcaseKeys = require('camelcase-keys')
   ;
 
-// extracts the data key and rescursively camelcases keys
-function processResponse({data}) {
-  return camelcaseKeys(data, {deep: true});
-}
-
 const proto = {
   get searchApiUrl() {
     return `${this.siteUrl}/api/search`;
@@ -29,13 +24,16 @@ const proto = {
       e: screenshot.episode,
       t: screenshot.timestamp
     })}`;
-    return axios.get(requestUrl).then(processResponse);
+    return axios.get(requestUrl)
+      .then(({data}) => camelcaseKeys(data, {deep: true}))
+      ;
   },
   searchScreenshots(terms) {
     const requestUrl = `${this.searchApiUrl}?${qs.stringify({
       q: terms
     })}`;
-    return axios.get(requestUrl).then(processResponse);
+    return axios.get(requestUrl)
+      .then(({data}) => data.map(screenshot => camelcaseKeys(screenshot, {deep: true})));
   }
 };
 
