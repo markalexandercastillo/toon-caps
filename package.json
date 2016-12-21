@@ -1,0 +1,14 @@
+{
+  "name": "toon-caps",
+  "version": "1.0.0",
+  "description": "Clients for the undocumented frinkiac and morbotron APIs",
+  "main": "src/index.js",
+  "author": "Mark Castillo <markalexandercastillo@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "axios": "^0.15.3",
+    "camelcase-keys": "^4.0.0",
+    "word-wrap": "^1.1.0"
+  }
+}
