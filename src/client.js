@@ -42,6 +42,45 @@ const proto = {
   },
   /**
    * Returns caption data matching the given screenshot data.
+   * Eg.:
+   * {
+   *   "episode": {
+   *     "id": 444,
+   *     "key": "S06E06",
+   *     "season": 6,
+   *     "episodeNumber": 6,
+   *     "title": "Treehouse of Horror V",
+   *     "director": "Jim Reardon",
+   *     "writer": "Greg Daniels, Dan McGrath, David S. Cohen & Bob Kushell",
+   *     "originalAirDate": "30-Oct-94",
+   *     "wikiLink": "https://en.wikipedia.org/wiki/Treehouse_of_Horror_V"
+   *   },
+   *   "frame": {
+   *     "id": 701025,
+   *     "episode": "S06E06",
+   *     "timestamp": 1026358
+   *   },
+   *   "subtitles": [
+   *     {
+   *       "id": 53923,
+   *       "representativeTimestamp": 1025190,
+   *       "episode": "S06E06",
+   *       "startTimestamp": 1023200,
+   *       "endTimestamp": 1027200,
+   *       "content": "Jimbo, this is by far the worst... mmm.",
+   *       "language": "en"
+   *     },
+   *     ...
+   *   ],
+   *   "nearby": [
+   *     {
+   *       "id": 701024,
+   *       "episode": "S06E06",
+   *       "timestamp": 1025857
+   *     },
+   *     ...
+   *   ]
+   * }
    * @return {Promise}
    */
   getCaptions(screenshot) {
@@ -56,6 +95,14 @@ const proto = {
   /**
    * Returns a promise resolving to an array ofscreenshot data matching the
    * given search terms.
+   * Eg: [
+   *   {
+   *     id: 701025,
+   *     episode: 'S06E06',
+   *     timestamp: 1026358
+   *   },
+   *   ...
+   * ]
    * @return {Promise}
    */
   searchScreenshots(terms) {
