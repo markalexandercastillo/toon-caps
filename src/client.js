@@ -16,6 +16,14 @@ const proto = {
   get captionApiUrl() {
     return `${this.siteUrl}/api/caption`;
   },
+  getImageUrl(screenshot) {
+    return `${this.siteUrl}/img/${screenshot.episode}/${screenshot.timestamp}.jpg`;
+  },
+  getMemeUrl(screenshot, text) {
+    // text is word wrapped at 25 characters and base64-encoded
+    const b64lines = new Buffer(wrap(text, {width: 25})).toString('base64');
+    return `${this.siteUrl}/meme/${screenshot.episode}/${screenshot.timestamp}.jpg?b64lines=${b64lines}`;
+  },
   getCaptions(screenshot) {
     const requestUrl = `${this.captionApiUrl}?${qs.stringify({
       e: screenshot.episode,
