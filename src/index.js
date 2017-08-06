@@ -6,6 +6,9 @@ const proto = {
   },
   get morbotron() {
     return createClient('https://morbotron.com');
+  },
+  get masterOfAllScience() {
+    return createClient('https://masterofallscience.com');
   }
 };
 
